@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blockchain</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {height: 200px}
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+            .row.content {height: auto;}
+        }
+    </style>
+</head>
+<body >
+/*Image have to add here*/
+<!--<img src="images/logo_decentralized_publishing_platform.png" alt="Decentralized Blockchain Publishing Platform" width="90%">-->
+<div class="container-fluid" >
+    <div class="row content">
+        <div class="col-sm-9" >
+            <h2>BitScholar - Blockchain Solution</h2>
+            <h5><span class="label label-danger">Solidity</span> <span class="label label-primary">Javascript </span> <span class="label label-info"> Ethereum</span></h5>
+                This is an Ethereum based research paper publishing platform.
+            <h4>
+                <a href="/">Home</a> |
+                <a href="/login">Register / Login</a> |
+                <a href="/submit">Submit Paper</a> |
+                <a href="/review">Review Paper</a> |
+                <a href="/list">View Papers</a>
+            </h4>
+        </div>
+
+    </div>
+
+
+    <span style="padding-right: 50px">IPFS Network Testing</span>
+    <img src="" id="ipfsTestImage"  name="ipfsTestImage" alt="test" width="100px" height="100px"/>
+    <br><span id="ipfs_image_msg" class="small alert-success"> if you see the above image then IPFS is working correctly, otherwise make sure to check IPFS daemon is running.</span>
+
+
+</div>
+
+
+
+
+<footer class="container-fluid">
+    <p>bitscholar.com (C) BitScholar - 2024</p>
+</footer>
+
+<script src="https://unpkg.com/ipfs-http-client@latest/dist/index.min.js" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/ipfs-http-client@latest/dist/index.js" crossorigin="anonymous"></script>
+
+<script src="/ipfs-function-library.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
+<script src="/web3j-function-library.js" ></script>
+
+</body>
+</html>

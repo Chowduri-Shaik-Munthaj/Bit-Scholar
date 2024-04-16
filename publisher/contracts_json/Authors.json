@@ -1,0 +1,3203 @@
+{
+  "contractName": "Authors",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "name": "_userContractaddress",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "paperId",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "name": "authorId",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "paperContractId",
+          "type": "address"
+        }
+      ],
+      "name": "addPaper",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_paperid",
+          "type": "uint32"
+        },
+        {
+          "name": "_authorAddress",
+          "type": "address"
+        }
+      ],
+      "name": "addPaperInUserFolder",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getAllPaperIds",
+      "outputs": [
+        {
+          "name": "_paperIds",
+          "type": "uint32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getNumUsers",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "verifyUser",
+      "outputs": [
+        {
+          "name": "ret",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_paperid\",\"type\":\"uint32\"},{\"name\":\"_authorAddress\",\"type\":\"address\"}],\"name\":\"addPaperInUserFolder\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getNumUsers\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"verifyUser\",\"outputs\":[{\"name\":\"ret\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getAllPaperIds\",\"outputs\":[{\"name\":\"_paperIds\",\"type\":\"uint32[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_userContractaddress\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"paperId\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"authorId\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"paperContractId\",\"type\":\"address\"}],\"name\":\"addPaper\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"addPaperInUserFolder(uint32,address)\":{\"details\":\"addPaperInUserFolder -  This function is used for adding a new paper under the author's name. For this the\\r the paperReference stores the paperid under the author's address by calling. The returned storage acts like a\\r folder for the the user. Where a user can hold more than one paper ids under their address.\\r\",\"params\":{\"_authorAddress\":\"the author address\\r\",\"_paperid\":\"paper id which must be stored under author's address\\r\"}},\"constructor\":{\"details\":\"the constructor simply gets the user contract address and store it in the user contract address\\r      this address is later used for initializing the user contract.\\r\",\"params\":{\"_userContractaddress\":\"must be the existing deployed user contract address\\r\"}},\"getAllPaperIds()\":{\"details\":\"getAllPaperIds -  This function returns all the paper ids associated to the calling address or user.\\r\",\"return\":\"uint32[]  _paperIds  The array of paper ids.\\r\"},\"getNumUsers()\":{\"details\":\"getNumUsers -  returns number of users by calling inter-contract-calls to User contract\\r\",\"return\":\"uint  number of users\\r\"},\"verifyUser()\":{\"details\":\"verifyUser -  verufy if the calling user is a registered user or non-registered . by calling inter-contract-calls to User contract\\r\",\"return\":\"bool    true if user is registered else false.\\r\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Authors.sol\":\"Authors\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Authors.sol\":{\"keccak256\":\"0x2fd85557a9e54b6b7ac55f42af1f24834f0191e321ca95ac1763386ab2b625e5\",\"urls\":[\"bzzr://804fae5f5836cab075dd65e556d0afe84036a114f032deb0d9416ce6149d0d9c\"]},\"project:/contracts/Users.sol\":{\"keccak256\":\"0xbda560db33bd42ac8fbd3d55c0f860af4edbfe95ec96bf60ecbf455dee347205\",\"urls\":[\"bzzr://74c798ee94fbc49800b54cf34a67c8013a15fca184f9fb61d0f1a61d8c3db65e\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405160208061069e8339810180604052602081101561003057600080fd5b810190808051906020019092919050505080600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506105aa806100f46000396000f3fe608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806305a8256c1461006757806365f88c0d146100c857806395407482146100f3578063f09bc69314610122575b600080fd5b34801561007357600080fd5b506100c66004803603604081101561008a57600080fd5b81019080803563ffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061018e565b005b3480156100d457600080fd5b506100dd61032b565b6040518082815260200191505060405180910390f35b3480156100ff57600080fd5b506101086103f0565b604051808215151515815260200191505060405180910390f35b34801561012e57600080fd5b506101376104b5565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b8381101561017a57808201518184015260208101905061015f565b505050509050019250505060405180910390f35b6000600260008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020905060008160000190508084908060018154018082558091505090600182039060005260206000209060089182820401919006600402909192909190916101000a81548163ffffffff021916908363ffffffff1602179055505081600101600081819054906101000a900463ffffffff168092919060010191906101000a81548163ffffffff021916908363ffffffff160217905550507f99cf9fcb85c3f0265f7eb847cc92b6b31d84af790c37cd2ef9ce84a36c31e7d78260010160009054906101000a900463ffffffff163233604051808463ffffffff1663ffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001935050505060405180910390a150505050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663753c49c46040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156103b057600080fd5b505afa1580156103c4573d6000803e3d6000fd5b505050506040513d60208110156103da57600080fd5b8101908080519060200190929190505050905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16636750b4a66040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b15801561047557600080fd5b505afa158015610489573d6000803e3d6000fd5b505050506040513d602081101561049f57600080fd5b8101908080519060200190929190505050905090565b606080600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060200260200160405190810160405280929190818152602001828054801561057057602002820191906000526020600020906000905b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116105335790505b50505050509050809150509056fea165627a7a7230582063125666267156d986df1c645cf8fd51ea01ab12641a7d9ed5e3f8dbf90e046e0029",
+  "deployedBytecode": "0x608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806305a8256c1461006757806365f88c0d146100c857806395407482146100f3578063f09bc69314610122575b600080fd5b34801561007357600080fd5b506100c66004803603604081101561008a57600080fd5b81019080803563ffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061018e565b005b3480156100d457600080fd5b506100dd61032b565b6040518082815260200191505060405180910390f35b3480156100ff57600080fd5b506101086103f0565b604051808215151515815260200191505060405180910390f35b34801561012e57600080fd5b506101376104b5565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b8381101561017a57808201518184015260208101905061015f565b505050509050019250505060405180910390f35b6000600260008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020905060008160000190508084908060018154018082558091505090600182039060005260206000209060089182820401919006600402909192909190916101000a81548163ffffffff021916908363ffffffff1602179055505081600101600081819054906101000a900463ffffffff168092919060010191906101000a81548163ffffffff021916908363ffffffff160217905550507f99cf9fcb85c3f0265f7eb847cc92b6b31d84af790c37cd2ef9ce84a36c31e7d78260010160009054906101000a900463ffffffff163233604051808463ffffffff1663ffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001935050505060405180910390a150505050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663753c49c46040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156103b057600080fd5b505afa1580156103c4573d6000803e3d6000fd5b505050506040513d60208110156103da57600080fd5b8101908080519060200190929190505050905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16636750b4a66040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b15801561047557600080fd5b505afa158015610489573d6000803e3d6000fd5b505050506040513d602081101561049f57600080fd5b8101908080519060200190929190505050905090565b606080600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060200260200160405190810160405280929190818152602001828054801561057057602002820191906000526020600020906000905b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116105335790505b50505050509050809150509056fea165627a7a7230582063125666267156d986df1c645cf8fd51ea01ab12641a7d9ed5e3f8dbf90e046e0029",
+  "sourceMap": "50:3355:0:-;;;939:163;8:9:-1;5:2;;;30:1;27;20:12;5:2;939:163:0;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;939:163:0;;;;;;;;;;;;;;;;1022:20;1001:19;;:41;;;;;;;;;;;;;;;;;;1074:19;;;;;;;;;;;1053:12;;:41;;;;;;;;;;;;;;;;;;939:163;50:3355;;;;;;",
+  "deployedSourceMap": "50:3355:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1767:631;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1767:631:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1767:631:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2942:112;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2942:112:0;;;;;;;;;;;;;;;;;;;;;;;3281:119;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3281:119:0;;;;;;;;;;;;;;;;;;;;;;;;;;;2593:190;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2593:190:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;2593:190:0;;;;;;;;;;;;;;;;;1767:631;1984:21;2008:15;:31;2024:14;2008:31;;;;;;;;;;;;;;;1984:55;;2052:24;2079:6;:15;;2052:42;;2107:7;2120:8;2107:22;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;2107:22:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2303:6;:18;;;:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2341:49;2350:6;:18;;;;;;;;;;;;2369:9;2379:10;2341:49;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1767:631;;;;:::o;2942:112::-;2985:4;3015:12;;;;;;;;;;;:29;;;:31;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3015:31:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;3015:31:0;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;3015:31:0;;;;;;;;;;;;;;;;3008:38;;2942:112;:::o;3281:119::-;3323:8;3356:12;;;;;;;;;;;:34;;;:36;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3356:36:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;3356:36:0;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;3356:36:0;;;;;;;;;;;;;;;;3349:43;;3281:119;:::o;2593:190::-;2640:25;2683;2711:15;:27;2727:10;2711:27;;;;;;;;;;;;;;;:36;;2683:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2767:8;2760:15;;;2593:190;:::o",
+  "source": "pragma solidity ^0.5.0;\r\nimport \"./Users.sol\";\r\n\r\ncontract Authors{\r\n\r\n    // user contract object\r\n    Users userContract;\r\n\r\n    // user contract address\r\n    address userContractAddress;\r\n\r\n    // when a paper gets added under a author address then this event gets fire\r\n    event addPaper(uint32 paperId,address authorId, address paperContractId);\r\n\r\n    // Folder structure to hold multiple paper ids\r\n    struct Folder {\r\n        uint32 [] paperIds;\r\n        uint32 totalPapers;\r\n    }\r\n\r\n    // an author address can have a folder which can have more than one paper informations\r\n    mapping (address => Folder) private paperReferences;\r\n\r\n\r\n    /** @dev the constructor simply gets the user contract address and store it in the user contract address\r\n     *       this address is later used for initializing the user contract.\r\n     * @param   _userContractaddress must be the existing deployed user contract address\r\n     */\r\n    constructor(address _userContractaddress) public {\r\n\r\n        userContractAddress =_userContractaddress;\r\n        userContract = Users(userContractAddress);\r\n    }\r\n\r\n    /*\r\n        modifier onlyAuthorRole() {\r\n            require(user_detail[msg.sender].exists,\" User not authorized or registerd user\");\r\n            _;\r\n        }\r\n    */\r\n\r\n\r\n    /** @dev addPaperInUserFolder -  This function is used for adding a new paper under the author's name. For this the\r\n     * the paperReference stores the paperid under the author's address by calling. The returned storage acts like a\r\n     * folder for the the user. Where a user can hold more than one paper ids under their address.\r\n     * @param  _paperid  paper id which must be stored under author's address\r\n     * @param  _authorAddress  the author address\r\n     */\r\n    function addPaperInUserFolder(uint32 _paperid,address _authorAddress) public //returns(uint32)// onlyAuthorRole public\r\n    {\r\n        //call the paper contract to add new stuff\r\n        // get unique folder\r\n        Folder storage folder = paperReferences[_authorAddress];\r\n\r\n        uint32[] storage paperId = folder.paperIds;\r\n\r\n        paperId.push(_paperid); //by default it will store value from 0 portion and then it will move on automatically you do not need specifically to mention element idenx like paperId[index]\r\n\r\n        folder.totalPapers++;\r\n\r\n        emit addPaper(folder.totalPapers,tx.origin,msg.sender);\r\n    }\r\n\r\n\r\n    /** @dev getAllPaperIds -  This function returns all the paper ids associated to the calling address or user.\r\n     * @return uint32[]  _paperIds  The array of paper ids.\r\n     */\r\n    function getAllPaperIds() public view returns (uint32[] memory _paperIds)\r\n    {\r\n        uint32 [] memory paperIds = paperReferences[msg.sender].paperIds;\r\n\r\n        return paperIds;\r\n    }\r\n\r\n\r\n    /** @dev getNumUsers -  returns number of users by calling inter-contract-calls to User contract\r\n     * @return uint  number of users\r\n     */\r\n    function getNumUsers() public view returns(uint )\r\n    {\r\n        return userContract.getNumberofUsers();\r\n    }\r\n\r\n\r\n    /** @dev verifyUser -  verufy if the calling user is a registered user or non-registered . by calling inter-contract-calls to User contract\r\n     * @return bool    true if user is registered else false.\r\n     */\r\n    function verifyUser() public view returns(bool ret)\r\n    {\r\n        return userContract.isUserExist_SmartCall();\r\n    }\r\n\r\n}\r\n",
+  "sourcePath": "E:\\Final project\\Final project\\truffle\\contracts\\Authors.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Authors.sol",
+    "exportedSymbols": {
+      "Authors": [
+        121
+      ]
+    },
+    "id": 122,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "absolutePath": "project:/contracts/Users.sol",
+        "file": "./Users.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 122,
+        "sourceUnit": 1622,
+        "src": "25:21:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 121,
+        "linearizedBaseContracts": [
+          121
+        ],
+        "name": "Authors",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 4,
+            "name": "userContract",
+            "nodeType": "VariableDeclaration",
+            "scope": 121,
+            "src": "104:18:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_Users_$1621",
+              "typeString": "contract Users"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 3,
+              "name": "Users",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1621,
+              "src": "104:5:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Users_$1621",
+                "typeString": "contract Users"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6,
+            "name": "userContractAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 121,
+            "src": "161:27:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 5,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "161:7:0",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 14,
+            "name": "addPaper",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 13,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8,
+                  "indexed": false,
+                  "name": "paperId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14,
+                  "src": "293:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 7,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "293:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10,
+                  "indexed": false,
+                  "name": "authorId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14,
+                  "src": "308:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "308:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12,
+                  "indexed": false,
+                  "name": "paperContractId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14,
+                  "src": "326:23:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "326:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "292:58:0"
+            },
+            "src": "278:73:0"
+          },
+          {
+            "canonicalName": "Authors.Folder",
+            "id": 20,
+            "members": [
+              {
+                "constant": false,
+                "id": 17,
+                "name": "paperIds",
+                "nodeType": "VariableDeclaration",
+                "scope": 20,
+                "src": "436:18:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                  "typeString": "uint32[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 15,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "436:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "id": 16,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "436:9:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                    "typeString": "uint32[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 19,
+                "name": "totalPapers",
+                "nodeType": "VariableDeclaration",
+                "scope": 20,
+                "src": "465:18:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 18,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "465:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Folder",
+            "nodeType": "StructDefinition",
+            "scope": 121,
+            "src": "411:80:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 24,
+            "name": "paperReferences",
+            "nodeType": "VariableDeclaration",
+            "scope": 121,
+            "src": "591:51:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Folder_$20_storage_$",
+              "typeString": "mapping(address => struct Authors.Folder)"
+            },
+            "typeName": {
+              "id": 23,
+              "keyType": {
+                "id": 21,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "600:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "591:27:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Folder_$20_storage_$",
+                "typeString": "mapping(address => struct Authors.Folder)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 22,
+                "name": "Folder",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 20,
+                "src": "611:6:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Folder_$20_storage_ptr",
+                  "typeString": "struct Authors.Folder"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 39,
+              "nodeType": "Block",
+              "src": "988:114:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 31,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 29,
+                      "name": "userContractAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6,
+                      "src": "1001:19:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 30,
+                      "name": "_userContractaddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 26,
+                      "src": "1022:20:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1001:41:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 32,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1001:41:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 37,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 33,
+                      "name": "userContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4,
+                      "src": "1053:12:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Users_$1621",
+                        "typeString": "contract Users"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 35,
+                          "name": "userContractAddress",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6,
+                          "src": "1074:19:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 34,
+                        "name": "Users",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1621,
+                        "src": "1068:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Users_$1621_$",
+                          "typeString": "type(contract Users)"
+                        }
+                      },
+                      "id": 36,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1068:26:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Users_$1621",
+                        "typeString": "contract Users"
+                      }
+                    },
+                    "src": "1053:41:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Users_$1621",
+                      "typeString": "contract Users"
+                    }
+                  },
+                  "id": 38,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1053:41:0"
+                }
+              ]
+            },
+            "documentation": "@dev the constructor simply gets the user contract address and store it in the user contract address\r\n      this address is later used for initializing the user contract.\r\n@param   _userContractaddress must be the existing deployed user contract address\r",
+            "id": 40,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 27,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 26,
+                  "name": "_userContractaddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 40,
+                  "src": "951:28:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "951:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "950:30:0"
+            },
+            "returnParameters": {
+              "id": 28,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "988:0:0"
+            },
+            "scope": 121,
+            "src": "939:163:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 80,
+              "nodeType": "Block",
+              "src": "1891:507:0",
+              "statements": [
+                {
+                  "assignments": [
+                    48
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 48,
+                      "name": "folder",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 80,
+                      "src": "1984:21:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Folder_$20_storage_ptr",
+                        "typeString": "struct Authors.Folder"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 47,
+                        "name": "Folder",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 20,
+                        "src": "1984:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Folder_$20_storage_ptr",
+                          "typeString": "struct Authors.Folder"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 52,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 49,
+                      "name": "paperReferences",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24,
+                      "src": "2008:15:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Folder_$20_storage_$",
+                        "typeString": "mapping(address => struct Authors.Folder storage ref)"
+                      }
+                    },
+                    "id": 51,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 50,
+                      "name": "_authorAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 44,
+                      "src": "2024:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "2008:31:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Folder_$20_storage",
+                      "typeString": "struct Authors.Folder storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1984:55:0"
+                },
+                {
+                  "assignments": [
+                    56
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 56,
+                      "name": "paperId",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 80,
+                      "src": "2052:24:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                        "typeString": "uint32[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 54,
+                          "name": "uint32",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "2052:6:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "id": 55,
+                        "length": null,
+                        "nodeType": "ArrayTypeName",
+                        "src": "2052:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                          "typeString": "uint32[]"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 59,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 57,
+                      "name": "folder",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "2079:6:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Folder_$20_storage_ptr",
+                        "typeString": "struct Authors.Folder storage pointer"
+                      }
+                    },
+                    "id": 58,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "paperIds",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 17,
+                    "src": "2079:15:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint32_$dyn_storage",
+                      "typeString": "uint32[] storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2052:42:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 63,
+                        "name": "_paperid",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 42,
+                        "src": "2120:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 60,
+                        "name": "paperId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 56,
+                        "src": "2107:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                          "typeString": "uint32[] storage pointer"
+                        }
+                      },
+                      "id": 62,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "2107:12:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_uint32_$returns$_t_uint256_$",
+                        "typeString": "function (uint32) returns (uint256)"
+                      }
+                    },
+                    "id": 64,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2107:22:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 65,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2107:22:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 69,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "2303:20:0",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 66,
+                        "name": "folder",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 48,
+                        "src": "2303:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Folder_$20_storage_ptr",
+                          "typeString": "struct Authors.Folder storage pointer"
+                        }
+                      },
+                      "id": 68,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "totalPapers",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 19,
+                      "src": "2303:18:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "id": 70,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2303:20:0"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 72,
+                          "name": "folder",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 48,
+                          "src": "2350:6:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Folder_$20_storage_ptr",
+                            "typeString": "struct Authors.Folder storage pointer"
+                          }
+                        },
+                        "id": 73,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "totalPapers",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 19,
+                        "src": "2350:18:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 74,
+                          "name": "tx",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2663,
+                          "src": "2369:2:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_transaction",
+                            "typeString": "tx"
+                          }
+                        },
+                        "id": 75,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "origin",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "2369:9:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 76,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2651,
+                          "src": "2379:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 77,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "2379:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        },
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 71,
+                      "name": "addPaper",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14,
+                      "src": "2341:8:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint32_$_t_address_$_t_address_$returns$__$",
+                        "typeString": "function (uint32,address,address)"
+                      }
+                    },
+                    "id": 78,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2341:49:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 79,
+                  "nodeType": "EmitStatement",
+                  "src": "2336:54:0"
+                }
+              ]
+            },
+            "documentation": "@dev addPaperInUserFolder -  This function is used for adding a new paper under the author's name. For this the\r\nthe paperReference stores the paperid under the author's address by calling. The returned storage acts like a\r\nfolder for the the user. Where a user can hold more than one paper ids under their address.\r\n@param  _paperid  paper id which must be stored under author's address\r\n@param  _authorAddress  the author address\r",
+            "id": 81,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addPaperInUserFolder",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 45,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 42,
+                  "name": "_paperid",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "1797:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 41,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1797:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 44,
+                  "name": "_authorAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "1813:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 43,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1813:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1796:40:0"
+            },
+            "returnParameters": {
+              "id": 46,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1891:0:0"
+            },
+            "scope": 121,
+            "src": "1767:631:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 99,
+              "nodeType": "Block",
+              "src": "2672:111:0",
+              "statements": [
+                {
+                  "assignments": [
+                    90
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 90,
+                      "name": "paperIds",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 99,
+                      "src": "2683:25:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_uint32_$dyn_memory_ptr",
+                        "typeString": "uint32[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 88,
+                          "name": "uint32",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "2683:6:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "id": 89,
+                        "length": null,
+                        "nodeType": "ArrayTypeName",
+                        "src": "2683:9:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                          "typeString": "uint32[]"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 96,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 91,
+                        "name": "paperReferences",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24,
+                        "src": "2711:15:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Folder_$20_storage_$",
+                          "typeString": "mapping(address => struct Authors.Folder storage ref)"
+                        }
+                      },
+                      "id": 94,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 92,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2651,
+                          "src": "2727:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 93,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "2727:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "2711:27:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Folder_$20_storage",
+                        "typeString": "struct Authors.Folder storage ref"
+                      }
+                    },
+                    "id": 95,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "paperIds",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 17,
+                    "src": "2711:36:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint32_$dyn_storage",
+                      "typeString": "uint32[] storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2683:64:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 97,
+                    "name": "paperIds",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 90,
+                    "src": "2767:8:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint32_$dyn_memory_ptr",
+                      "typeString": "uint32[] memory"
+                    }
+                  },
+                  "functionReturnParameters": 86,
+                  "id": 98,
+                  "nodeType": "Return",
+                  "src": "2760:15:0"
+                }
+              ]
+            },
+            "documentation": "@dev getAllPaperIds -  This function returns all the paper ids associated to the calling address or user.\r\n@return uint32[]  _paperIds  The array of paper ids.\r",
+            "id": 100,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAllPaperIds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 82,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2616:2:0"
+            },
+            "returnParameters": {
+              "id": 86,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 85,
+                  "name": "_paperIds",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 100,
+                  "src": "2640:25:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint32_$dyn_memory_ptr",
+                    "typeString": "uint32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 83,
+                      "name": "uint32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2640:6:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "id": 84,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2640:8:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                      "typeString": "uint32[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2639:27:0"
+            },
+            "scope": 121,
+            "src": "2593:190:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 109,
+              "nodeType": "Block",
+              "src": "2997:57:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 105,
+                        "name": "userContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4,
+                        "src": "3015:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Users_$1621",
+                          "typeString": "contract Users"
+                        }
+                      },
+                      "id": 106,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getNumberofUsers",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1562,
+                      "src": "3015:29:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                        "typeString": "function () view external returns (uint256)"
+                      }
+                    },
+                    "id": 107,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3015:31:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 104,
+                  "id": 108,
+                  "nodeType": "Return",
+                  "src": "3008:38:0"
+                }
+              ]
+            },
+            "documentation": "@dev getNumUsers -  returns number of users by calling inter-contract-calls to User contract\r\n@return uint  number of users\r",
+            "id": 110,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getNumUsers",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 101,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2962:2:0"
+            },
+            "returnParameters": {
+              "id": 104,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 103,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "2985:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 102,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2985:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2984:7:0"
+            },
+            "scope": 121,
+            "src": "2942:112:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 119,
+              "nodeType": "Block",
+              "src": "3338:62:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 115,
+                        "name": "userContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4,
+                        "src": "3356:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Users_$1621",
+                          "typeString": "contract Users"
+                        }
+                      },
+                      "id": 116,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "isUserExist_SmartCall",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1620,
+                      "src": "3356:34:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_bool_$",
+                        "typeString": "function () view external returns (bool)"
+                      }
+                    },
+                    "id": 117,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3356:36:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 114,
+                  "id": 118,
+                  "nodeType": "Return",
+                  "src": "3349:43:0"
+                }
+              ]
+            },
+            "documentation": "@dev verifyUser -  verufy if the calling user is a registered user or non-registered . by calling inter-contract-calls to User contract\r\n@return bool    true if user is registered else false.\r",
+            "id": 120,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyUser",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 111,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3300:2:0"
+            },
+            "returnParameters": {
+              "id": 114,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 113,
+                  "name": "ret",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 120,
+                  "src": "3323:8:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 112,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3323:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3322:10:0"
+            },
+            "scope": 121,
+            "src": "3281:119:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 122,
+        "src": "50:3355:0"
+      }
+    ],
+    "src": "0:3407:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/Authors.sol",
+      "exportedSymbols": {
+        "Authors": [
+          121
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1622,
+          "absolutePath": "project:/contracts/Users.sol",
+          "file": "./Users.sol",
+          "scope": 122,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2,
+        "name": "ImportDirective",
+        "src": "25:21:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            121
+          ],
+          "name": "Authors",
+          "scope": 122
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "userContract",
+              "scope": 121,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract Users",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Users",
+                  "referencedDeclaration": 1621,
+                  "type": "contract Users"
+                },
+                "id": 3,
+                "name": "UserDefinedTypeName",
+                "src": "104:5:0"
+              }
+            ],
+            "id": 4,
+            "name": "VariableDeclaration",
+            "src": "104:18:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "userContractAddress",
+              "scope": 121,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "stateMutability": "nonpayable",
+                  "type": "address"
+                },
+                "id": 5,
+                "name": "ElementaryTypeName",
+                "src": "161:7:0"
+              }
+            ],
+            "id": 6,
+            "name": "VariableDeclaration",
+            "src": "161:27:0"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "addPaper"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "paperId",
+                      "scope": 14,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 7,
+                        "name": "ElementaryTypeName",
+                        "src": "293:6:0"
+                      }
+                    ],
+                    "id": 8,
+                    "name": "VariableDeclaration",
+                    "src": "293:14:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "authorId",
+                      "scope": 14,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9,
+                        "name": "ElementaryTypeName",
+                        "src": "308:7:0"
+                      }
+                    ],
+                    "id": 10,
+                    "name": "VariableDeclaration",
+                    "src": "308:16:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "paperContractId",
+                      "scope": 14,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 11,
+                        "name": "ElementaryTypeName",
+                        "src": "326:7:0"
+                      }
+                    ],
+                    "id": 12,
+                    "name": "VariableDeclaration",
+                    "src": "326:23:0"
+                  }
+                ],
+                "id": 13,
+                "name": "ParameterList",
+                "src": "292:58:0"
+              }
+            ],
+            "id": 14,
+            "name": "EventDefinition",
+            "src": "278:73:0"
+          },
+          {
+            "attributes": {
+              "canonicalName": "Authors.Folder",
+              "name": "Folder",
+              "scope": 121,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "paperIds",
+                  "scope": 20,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint32[]",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "length": null,
+                      "type": "uint32[]"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 15,
+                        "name": "ElementaryTypeName",
+                        "src": "436:6:0"
+                      }
+                    ],
+                    "id": 16,
+                    "name": "ArrayTypeName",
+                    "src": "436:9:0"
+                  }
+                ],
+                "id": 17,
+                "name": "VariableDeclaration",
+                "src": "436:18:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "totalPapers",
+                  "scope": 20,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint32",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint32",
+                      "type": "uint32"
+                    },
+                    "id": 18,
+                    "name": "ElementaryTypeName",
+                    "src": "465:6:0"
+                  }
+                ],
+                "id": 19,
+                "name": "VariableDeclaration",
+                "src": "465:18:0"
+              }
+            ],
+            "id": 20,
+            "name": "StructDefinition",
+            "src": "411:80:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "paperReferences",
+              "scope": 121,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => struct Authors.Folder)",
+              "value": null,
+              "visibility": "private"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(address => struct Authors.Folder)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 21,
+                    "name": "ElementaryTypeName",
+                    "src": "600:7:0"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "Folder",
+                      "referencedDeclaration": 20,
+                      "type": "struct Authors.Folder"
+                    },
+                    "id": 22,
+                    "name": "UserDefinedTypeName",
+                    "src": "611:6:0"
+                  }
+                ],
+                "id": 23,
+                "name": "Mapping",
+                "src": "591:27:0"
+              }
+            ],
+            "id": 24,
+            "name": "VariableDeclaration",
+            "src": "591:51:0"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev the constructor simply gets the user contract address and store it in the user contract address\r\n      this address is later used for initializing the user contract.\r\n@param   _userContractaddress must be the existing deployed user contract address\r",
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 121,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_userContractaddress",
+                      "scope": 40,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 25,
+                        "name": "ElementaryTypeName",
+                        "src": "951:7:0"
+                      }
+                    ],
+                    "id": 26,
+                    "name": "VariableDeclaration",
+                    "src": "951:28:0"
+                  }
+                ],
+                "id": 27,
+                "name": "ParameterList",
+                "src": "950:30:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 28,
+                "name": "ParameterList",
+                "src": "988:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6,
+                              "type": "address",
+                              "value": "userContractAddress"
+                            },
+                            "id": 29,
+                            "name": "Identifier",
+                            "src": "1001:19:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 26,
+                              "type": "address",
+                              "value": "_userContractaddress"
+                            },
+                            "id": 30,
+                            "name": "Identifier",
+                            "src": "1022:20:0"
+                          }
+                        ],
+                        "id": 31,
+                        "name": "Assignment",
+                        "src": "1001:41:0"
+                      }
+                    ],
+                    "id": 32,
+                    "name": "ExpressionStatement",
+                    "src": "1001:41:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract Users"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4,
+                              "type": "contract Users",
+                              "value": "userContract"
+                            },
+                            "id": 33,
+                            "name": "Identifier",
+                            "src": "1053:12:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "contract Users",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 1621,
+                                  "type": "type(contract Users)",
+                                  "value": "Users"
+                                },
+                                "id": 34,
+                                "name": "Identifier",
+                                "src": "1068:5:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6,
+                                  "type": "address",
+                                  "value": "userContractAddress"
+                                },
+                                "id": 35,
+                                "name": "Identifier",
+                                "src": "1074:19:0"
+                              }
+                            ],
+                            "id": 36,
+                            "name": "FunctionCall",
+                            "src": "1068:26:0"
+                          }
+                        ],
+                        "id": 37,
+                        "name": "Assignment",
+                        "src": "1053:41:0"
+                      }
+                    ],
+                    "id": 38,
+                    "name": "ExpressionStatement",
+                    "src": "1053:41:0"
+                  }
+                ],
+                "id": 39,
+                "name": "Block",
+                "src": "988:114:0"
+              }
+            ],
+            "id": 40,
+            "name": "FunctionDefinition",
+            "src": "939:163:0"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev addPaperInUserFolder -  This function is used for adding a new paper under the author's name. For this the\r\nthe paperReference stores the paperid under the author's address by calling. The returned storage acts like a\r\nfolder for the the user. Where a user can hold more than one paper ids under their address.\r\n@param  _paperid  paper id which must be stored under author's address\r\n@param  _authorAddress  the author address\r",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "addPaperInUserFolder",
+              "scope": 121,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_paperid",
+                      "scope": 81,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 41,
+                        "name": "ElementaryTypeName",
+                        "src": "1797:6:0"
+                      }
+                    ],
+                    "id": 42,
+                    "name": "VariableDeclaration",
+                    "src": "1797:15:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_authorAddress",
+                      "scope": 81,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 43,
+                        "name": "ElementaryTypeName",
+                        "src": "1813:7:0"
+                      }
+                    ],
+                    "id": 44,
+                    "name": "VariableDeclaration",
+                    "src": "1813:22:0"
+                  }
+                ],
+                "id": 45,
+                "name": "ParameterList",
+                "src": "1796:40:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 46,
+                "name": "ParameterList",
+                "src": "1891:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        48
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "folder",
+                          "scope": 80,
+                          "stateVariable": false,
+                          "storageLocation": "storage",
+                          "type": "struct Authors.Folder",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "Folder",
+                              "referencedDeclaration": 20,
+                              "type": "struct Authors.Folder"
+                            },
+                            "id": 47,
+                            "name": "UserDefinedTypeName",
+                            "src": "1984:6:0"
+                          }
+                        ],
+                        "id": 48,
+                        "name": "VariableDeclaration",
+                        "src": "1984:21:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct Authors.Folder storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 24,
+                              "type": "mapping(address => struct Authors.Folder storage ref)",
+                              "value": "paperReferences"
+                            },
+                            "id": 49,
+                            "name": "Identifier",
+                            "src": "2008:15:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 44,
+                              "type": "address",
+                              "value": "_authorAddress"
+                            },
+                            "id": 50,
+                            "name": "Identifier",
+                            "src": "2024:14:0"
+                          }
+                        ],
+                        "id": 51,
+                        "name": "IndexAccess",
+                        "src": "2008:31:0"
+                      }
+                    ],
+                    "id": 52,
+                    "name": "VariableDeclarationStatement",
+                    "src": "1984:55:0"
+                  },
+                  {
+                    "attributes": {
+                      "assignments": [
+                        56
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "paperId",
+                          "scope": 80,
+                          "stateVariable": false,
+                          "storageLocation": "storage",
+                          "type": "uint32[]",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "length": null,
+                              "type": "uint32[]"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "name": "uint32",
+                                  "type": "uint32"
+                                },
+                                "id": 54,
+                                "name": "ElementaryTypeName",
+                                "src": "2052:6:0"
+                              }
+                            ],
+                            "id": 55,
+                            "name": "ArrayTypeName",
+                            "src": "2052:8:0"
+                          }
+                        ],
+                        "id": 56,
+                        "name": "VariableDeclaration",
+                        "src": "2052:24:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "member_name": "paperIds",
+                          "referencedDeclaration": 17,
+                          "type": "uint32[] storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 48,
+                              "type": "struct Authors.Folder storage pointer",
+                              "value": "folder"
+                            },
+                            "id": 57,
+                            "name": "Identifier",
+                            "src": "2079:6:0"
+                          }
+                        ],
+                        "id": 58,
+                        "name": "MemberAccess",
+                        "src": "2079:15:0"
+                      }
+                    ],
+                    "id": 59,
+                    "name": "VariableDeclarationStatement",
+                    "src": "2052:42:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "uint256",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint32",
+                                  "typeString": "uint32"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "push",
+                              "referencedDeclaration": null,
+                              "type": "function (uint32) returns (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 56,
+                                  "type": "uint32[] storage pointer",
+                                  "value": "paperId"
+                                },
+                                "id": 60,
+                                "name": "Identifier",
+                                "src": "2107:7:0"
+                              }
+                            ],
+                            "id": 62,
+                            "name": "MemberAccess",
+                            "src": "2107:12:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 42,
+                              "type": "uint32",
+                              "value": "_paperid"
+                            },
+                            "id": 63,
+                            "name": "Identifier",
+                            "src": "2120:8:0"
+                          }
+                        ],
+                        "id": 64,
+                        "name": "FunctionCall",
+                        "src": "2107:22:0"
+                      }
+                    ],
+                    "id": 65,
+                    "name": "ExpressionStatement",
+                    "src": "2107:22:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "++",
+                          "prefix": false,
+                          "type": "uint32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "totalPapers",
+                              "referencedDeclaration": 19,
+                              "type": "uint32"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 48,
+                                  "type": "struct Authors.Folder storage pointer",
+                                  "value": "folder"
+                                },
+                                "id": 66,
+                                "name": "Identifier",
+                                "src": "2303:6:0"
+                              }
+                            ],
+                            "id": 68,
+                            "name": "MemberAccess",
+                            "src": "2303:18:0"
+                          }
+                        ],
+                        "id": 69,
+                        "name": "UnaryOperation",
+                        "src": "2303:20:0"
+                      }
+                    ],
+                    "id": 70,
+                    "name": "ExpressionStatement",
+                    "src": "2303:20:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint32",
+                                  "typeString": "uint32"
+                                },
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                },
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 14,
+                              "type": "function (uint32,address,address)",
+                              "value": "addPaper"
+                            },
+                            "id": 71,
+                            "name": "Identifier",
+                            "src": "2341:8:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "totalPapers",
+                              "referencedDeclaration": 19,
+                              "type": "uint32"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 48,
+                                  "type": "struct Authors.Folder storage pointer",
+                                  "value": "folder"
+                                },
+                                "id": 72,
+                                "name": "Identifier",
+                                "src": "2350:6:0"
+                              }
+                            ],
+                            "id": 73,
+                            "name": "MemberAccess",
+                            "src": "2350:18:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "origin",
+                              "referencedDeclaration": null,
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2663,
+                                  "type": "tx",
+                                  "value": "tx"
+                                },
+                                "id": 74,
+                                "name": "Identifier",
+                                "src": "2369:2:0"
+                              }
+                            ],
+                            "id": 75,
+                            "name": "MemberAccess",
+                            "src": "2369:9:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2651,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 76,
+                                "name": "Identifier",
+                                "src": "2379:3:0"
+                              }
+                            ],
+                            "id": 77,
+                            "name": "MemberAccess",
+                            "src": "2379:10:0"
+                          }
+                        ],
+                        "id": 78,
+                        "name": "FunctionCall",
+                        "src": "2341:49:0"
+                      }
+                    ],
+                    "id": 79,
+                    "name": "EmitStatement",
+                    "src": "2336:54:0"
+                  }
+                ],
+                "id": 80,
+                "name": "Block",
+                "src": "1891:507:0"
+              }
+            ],
+            "id": 81,
+            "name": "FunctionDefinition",
+            "src": "1767:631:0"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev getAllPaperIds -  This function returns all the paper ids associated to the calling address or user.\r\n@return uint32[]  _paperIds  The array of paper ids.\r",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getAllPaperIds",
+              "scope": 121,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 82,
+                "name": "ParameterList",
+                "src": "2616:2:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_paperIds",
+                      "scope": 100,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "uint32[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "uint32[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint32",
+                              "type": "uint32"
+                            },
+                            "id": 83,
+                            "name": "ElementaryTypeName",
+                            "src": "2640:6:0"
+                          }
+                        ],
+                        "id": 84,
+                        "name": "ArrayTypeName",
+                        "src": "2640:8:0"
+                      }
+                    ],
+                    "id": 85,
+                    "name": "VariableDeclaration",
+                    "src": "2640:25:0"
+                  }
+                ],
+                "id": 86,
+                "name": "ParameterList",
+                "src": "2639:27:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        90
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "paperIds",
+                          "scope": 99,
+                          "stateVariable": false,
+                          "storageLocation": "memory",
+                          "type": "uint32[]",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "length": null,
+                              "type": "uint32[]"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "name": "uint32",
+                                  "type": "uint32"
+                                },
+                                "id": 88,
+                                "name": "ElementaryTypeName",
+                                "src": "2683:6:0"
+                              }
+                            ],
+                            "id": 89,
+                            "name": "ArrayTypeName",
+                            "src": "2683:9:0"
+                          }
+                        ],
+                        "id": 90,
+                        "name": "VariableDeclaration",
+                        "src": "2683:25:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "member_name": "paperIds",
+                          "referencedDeclaration": 17,
+                          "type": "uint32[] storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "struct Authors.Folder storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 24,
+                                  "type": "mapping(address => struct Authors.Folder storage ref)",
+                                  "value": "paperReferences"
+                                },
+                                "id": 91,
+                                "name": "Identifier",
+                                "src": "2711:15:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address payable"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 2651,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 92,
+                                    "name": "Identifier",
+                                    "src": "2727:3:0"
+                                  }
+                                ],
+                                "id": 93,
+                                "name": "MemberAccess",
+                                "src": "2727:10:0"
+                              }
+                            ],
+                            "id": 94,
+                            "name": "IndexAccess",
+                            "src": "2711:27:0"
+                          }
+                        ],
+                        "id": 95,
+                        "name": "MemberAccess",
+                        "src": "2711:36:0"
+                      }
+                    ],
+                    "id": 96,
+                    "name": "VariableDeclarationStatement",
+                    "src": "2683:64:0"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 86
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 90,
+                          "type": "uint32[] memory",
+                          "value": "paperIds"
+                        },
+                        "id": 97,
+                        "name": "Identifier",
+                        "src": "2767:8:0"
+                      }
+                    ],
+                    "id": 98,
+                    "name": "Return",
+                    "src": "2760:15:0"
+                  }
+                ],
+                "id": 99,
+                "name": "Block",
+                "src": "2672:111:0"
+              }
+            ],
+            "id": 100,
+            "name": "FunctionDefinition",
+            "src": "2593:190:0"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev getNumUsers -  returns number of users by calling inter-contract-calls to User contract\r\n@return uint  number of users\r",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getNumUsers",
+              "scope": 121,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 101,
+                "name": "ParameterList",
+                "src": "2962:2:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 110,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 102,
+                        "name": "ElementaryTypeName",
+                        "src": "2985:4:0"
+                      }
+                    ],
+                    "id": 103,
+                    "name": "VariableDeclaration",
+                    "src": "2985:4:0"
+                  }
+                ],
+                "id": 104,
+                "name": "ParameterList",
+                "src": "2984:7:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 104
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "uint256",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "getNumberofUsers",
+                              "referencedDeclaration": 1562,
+                              "type": "function () view external returns (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 4,
+                                  "type": "contract Users",
+                                  "value": "userContract"
+                                },
+                                "id": 105,
+                                "name": "Identifier",
+                                "src": "3015:12:0"
+                              }
+                            ],
+                            "id": 106,
+                            "name": "MemberAccess",
+                            "src": "3015:29:0"
+                          }
+                        ],
+                        "id": 107,
+                        "name": "FunctionCall",
+                        "src": "3015:31:0"
+                      }
+                    ],
+                    "id": 108,
+                    "name": "Return",
+                    "src": "3008:38:0"
+                  }
+                ],
+                "id": 109,
+                "name": "Block",
+                "src": "2997:57:0"
+              }
+            ],
+            "id": 110,
+            "name": "FunctionDefinition",
+            "src": "2942:112:0"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev verifyUser -  verufy if the calling user is a registered user or non-registered . by calling inter-contract-calls to User contract\r\n@return bool    true if user is registered else false.\r",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "verifyUser",
+              "scope": 121,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 111,
+                "name": "ParameterList",
+                "src": "3300:2:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "ret",
+                      "scope": 120,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 112,
+                        "name": "ElementaryTypeName",
+                        "src": "3323:4:0"
+                      }
+                    ],
+                    "id": 113,
+                    "name": "VariableDeclaration",
+                    "src": "3323:8:0"
+                  }
+                ],
+                "id": 114,
+                "name": "ParameterList",
+                "src": "3322:10:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 114
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "bool",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "isUserExist_SmartCall",
+                              "referencedDeclaration": 1620,
+                              "type": "function () view external returns (bool)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 4,
+                                  "type": "contract Users",
+                                  "value": "userContract"
+                                },
+                                "id": 115,
+                                "name": "Identifier",
+                                "src": "3356:12:0"
+                              }
+                            ],
+                            "id": 116,
+                            "name": "MemberAccess",
+                            "src": "3356:34:0"
+                          }
+                        ],
+                        "id": 117,
+                        "name": "FunctionCall",
+                        "src": "3356:36:0"
+                      }
+                    ],
+                    "id": 118,
+                    "name": "Return",
+                    "src": "3349:43:0"
+                  }
+                ],
+                "id": 119,
+                "name": "Block",
+                "src": "3338:62:0"
+              }
+            ],
+            "id": 120,
+            "name": "FunctionDefinition",
+            "src": "3281:119:0"
+          }
+        ],
+        "id": 121,
+        "name": "ContractDefinition",
+        "src": "50:3355:0"
+      }
+    ],
+    "id": 122,
+    "name": "SourceUnit",
+    "src": "0:3407:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x66F775BA16928F3DB7395F94Ac8E4a9DF05Ac15E",
+      "transactionHash": "0xa24a8c08ee7c38a78f38d8b78664ffc0d04e199bffac28540c868bf0f09193f5"
+    }
+  },
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-03-22T09:40:13.922Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {
+      "addPaperInUserFolder(uint32,address)": {
+        "details": "addPaperInUserFolder -  This function is used for adding a new paper under the author's name. For this the\r the paperReference stores the paperid under the author's address by calling. The returned storage acts like a\r folder for the the user. Where a user can hold more than one paper ids under their address.\r",
+        "params": {
+          "_authorAddress": "the author address\r",
+          "_paperid": "paper id which must be stored under author's address\r"
+        }
+      },
+      "constructor": {
+        "details": "the constructor simply gets the user contract address and store it in the user contract address\r      this address is later used for initializing the user contract.\r",
+        "params": {
+          "_userContractaddress": "must be the existing deployed user contract address\r"
+        }
+      },
+      "getAllPaperIds()": {
+        "details": "getAllPaperIds -  This function returns all the paper ids associated to the calling address or user.\r",
+        "return": "uint32[]  _paperIds  The array of paper ids.\r"
+      },
+      "getNumUsers()": {
+        "details": "getNumUsers -  returns number of users by calling inter-contract-calls to User contract\r",
+        "return": "uint  number of users\r"
+      },
+      "verifyUser()": {
+        "details": "verifyUser -  verufy if the calling user is a registered user or non-registered . by calling inter-contract-calls to User contract\r",
+        "return": "bool    true if user is registered else false.\r"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
